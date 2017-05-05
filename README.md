@@ -3,6 +3,70 @@ The Feather Project
 
 This repository contains front-end packages for [Project Feather](http://projectfeather.sitefinity.com).
 
+# Issues Fixed in this Fork
+---
+Upgrade grunt-sass to one that builds on newer versions of NPM.
+Solves issue below during ```npm install```
+```
+module.js:598
+  return process.dlopen(module, path._makeLong(filename));
+                 ^
+
+Error: Module did not self-register.
+    at Object.Module._extensions..node (module.js:598:18)
+    at Module.load (module.js:488:32)
+    at tryModuleLoad (module.js:447:12)
+    at Function.Module._load (module.js:439:3)
+    at Module.require (module.js:498:17)
+    at require (internal/module.js:20:19)
+    at Object.<anonymous> (/Users/jbrasch/Code/UTI/UTI.SitefinityWebApp/ResourcePackages/Foundation6/node_modules/node-sass/lib/index.js:181:15)
+    at Module._compile (module.js:571:32)
+    at Object.Module._extensions..js (module.js:580:10)
+    at Module.load (module.js:488:32)
+npm WARN Foundation@ No repository field.
+npm WARN Foundation@ No license field.
+npm ERR! Darwin 15.6.0
+npm ERR! argv "/usr/local/Cellar/node/7.10.0/bin/node" "/usr/local/bin/npm" "install" "--save-dev" "node-sass@1.2.3"
+npm ERR! node v7.10.0
+npm ERR! npm  v4.2.0
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+
+npm ERR! node-sass@1.2.3 postinstall: `node scripts/build.js`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the node-sass@1.2.3 postinstall script 'node scripts/build.js'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the node-sass package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     node scripts/build.js
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs node-sass
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls node-sass
+npm ERR! There is likely additional logging output above.
+```
+Fix grunt uglify option to allow building without error.  Error shown below:
+```
+Running "uglify:dist" (uglify) task
+TypeError: Cannot create property 'warnings' on boolean 'true'
+    at Object.exports.minify (/Users/jbrasch/Code/feather-packages/community-packages/Foundation/node_modules/grunt-contrib-uglify/tasks/lib/uglify.js:82:35)
+    at /Users/jbrasch/Code/feather-packages/community-packages/Foundation/node_modules/grunt-contrib-uglify/tasks/uglify.js:136:25
+    at Array.forEach (native)
+    at Object.<anonymous> (/Users/jbrasch/Code/feather-packages/community-packages/Foundation/node_modules/grunt-contrib-uglify/tasks/uglify.js:61:16)
+    at Object.<anonymous> (/Users/jbrasch/Code/feather-packages/community-packages/Foundation/node_modules/grunt/lib/grunt/task.js:264:15)
+    at Object.thisTask.fn (/Users/jbrasch/Code/feather-packages/community-packages/Foundation/node_modules/grunt/lib/grunt/task.js:82:16)
+    at Object.<anonymous> (/Users/jbrasch/Code/feather-packages/community-packages/Foundation/node_modules/grunt/lib/util/task.js:301:30)
+    at Task.runTaskFn (/Users/jbrasch/Code/feather-packages/community-packages/Foundation/node_modules/grunt/lib/util/task.js:251:24)
+    at Task.<anonymous> (/Users/jbrasch/Code/feather-packages/community-packages/Foundation/node_modules/grunt/lib/util/task.js:300:12)
+    at /Users/jbrasch/Code/feather-packages/community-packages/Foundation/node_modules/grunt/lib/util/task.js:227:11
+>> Uglifying source node_modules/zurb-foundation-5/js/foundation/foundation.js failed.
+Warning: Uglification failed.
+Cannot create property 'warnings' on boolean 'true'.
+ Use --force to continue.
+```
+
 # Related Repositories
 
 [feather](https://github.com/Sitefinity/feather) - This repository contains the core infrastructure related to the Feather project.
