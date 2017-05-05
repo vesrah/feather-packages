@@ -90,7 +90,7 @@ module.exports = function (grunt) {
       dist: {
         options: {
           mangle: true,
-          compress: true
+          compress: {}
         },
         files: ['<%= jsFiles  %>']
       }
