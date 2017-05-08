@@ -4,7 +4,6 @@ The Feather Project
 This repository contains front-end packages for [Project Feather](http://projectfeather.sitefinity.com).
 
 # Issues Fixed in this Fork
----
 Upgrade grunt-sass to one that builds on newer versions of NPM.
 Solves issue below during ```npm install```
 ```
